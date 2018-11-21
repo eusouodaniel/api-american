@@ -1,0 +1,64 @@
+{% extends '::Backend/base.html.twig' %}
+
+{% block body -%}
+<aside class="right-side">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Aulas</h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row ">
+            <div class="col-xs-12 bs-50">
+                <a href="{{ path('backend_course', { 'course': course.id }) }}" class="btn btn-default">Voltar</a>
+                <a href="{{ path('backend_lesson_new',{'course': course.id}) }}" class="btn btn-success">Novo</a>
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Listagem de Aulas</h3>
+                    </div><!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Nome</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody class="sortable">
+                            {% for entity in entities %}
+                                <tr id="lesson_order_{{entity.id}}">
+                                    <td class="sortable-cursor"><i class="fa fa-bars" aria-hidden="true"></i></td>
+                                    <td>{{ entity.name }}</td>
+                                    <td>
+                                        <a href="{{ path('backend_lesson_edit', { 'id': entity.id }) }}" class="btn btn-primary">Editar</a>
+                                        <a href="{{ path('backend_lessonfiles_index', {'lesson': entity.id}) }}" class="btn btn-info">Anexos</a>
+                                        <a href="javascript:void(0);" data-url="{{ path('backend_lesson_delete', { 'id': entity.id }) }}" class="btn btn-danger delete_item">Excluir</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div>
+        </div>
+    </section><!-- /.content -->
+</aside><!-- /.right-side -->
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts filter='?uglifyjs2'
+        '@AppBundle/Resources/public/js/custom/Lesson/list.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

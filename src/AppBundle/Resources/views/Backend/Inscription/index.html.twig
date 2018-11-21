@@ -1,0 +1,72 @@
+{% extends '::Backend/base.html.twig' %}
+
+{% block body -%}
+    <aside class="right-side">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>Inscrições</h1>
+        </section>
+
+        <section class="content">
+        <div class="col-md-12">
+            <div class="panel panel-tile">
+                <div class="panel-body pn pl20 p5">
+                    <div class="col-sm-6 col-md-4">
+                    <h2 class="mt15 lh15">
+                        <b class="ng-binding">{{inscriptions|length}}</b>
+                    </h2>
+                    <h5 class="text-muted">Total de inscrições</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row ">
+                <div class="col-xs-12 bs-50">
+                    <a href="{{ path('backend_inscription_create') }}" class="btn btn-success">Novo</a>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">Listagem de Inscrições</h3>
+                        </div><!-- /.box-header -->
+                        <div class="box-body table-responsive no-padding">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Plano</th>
+                                        <th>Valor</th>
+                                        <th>Status</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for inscription in inscriptions %}
+                                    <tr>
+                                        <td>{{ inscription.user.fullName }}</td>
+                                        <td>{{ inscription.plan.name }}</td>
+                                        <td>{{ inscription.plan.product.price }}</td>
+                                        <td>{{ inscription.inscriptionstatus }}</td>
+                                        <td>
+                                        <a href="{{ path('backend_inscription_edit', { 'id': inscription.id }) }}" class="btn btn-primary">Editar</a>
+                                        <a href="javascript:void(0);" data-url="{{ path('backend_inscription_delete', { 'id': inscription.id }) }}" class="btn btn-danger delete_item">Excluir</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div>
+            </div>
+        </section><!-- /.content -->
+    </aside><!-- /.right-side -->
+{% endblock %}

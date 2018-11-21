@@ -1,0 +1,215 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+<!-- Carousel -->
+<!-- Full Page Image Background Carousel Header -->
+<header id="myCarousel" class="carousel slide">
+	<!-- Indicators -->
+	<ol class="carousel-indicators text-right">
+		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		{% if banners|length >=2 %}
+			<li data-target="#myCarousel" data-slide-to="1"></li>
+		{% endif %}
+		{% if banners|length >=3 %}
+			<li data-target="#myCarousel" data-slide-to="2"></li>
+		{% endif %}
+	</ol>
+
+	<!-- Wrapper for Slides -->
+	<div class="carousel-inner">
+		{% for banner in banners %}
+			<div class="item {% if loop.first %}active{% endif %}">
+				<!-- Set the first background image using inline CSS below. -->
+				<div class="fill" style="background-image:url('/sistema/web/uploads/banner/{{banner.image}}');"></div>
+				<div class="carousel-caption wow">
+					<h1 class="wow title-slider">{{banner.title}}</h1>
+					<p class="wow text-slider">{{banner.description}}</p>
+					{% if banner.url != null %}
+						<a href="{% if banner.url starts with 'http://' %}{% else %}http://{% endif %}{{banner.url}}">
+							<button class="btn btn-see">
+								<i class="fa fa-play-circle-o"></i> {% if banner.buttonLabel != null %}{{banner.buttonLabel}}{% else %}Veja mais{% endif %}
+							</button>
+						</a>
+					{% endif %}
+				</div>
+			</div>
+		{% endfor  %}
+   </div>
+
+</header>
+<!-- /.Carousel -->
+
+
+<section id="popular-videos" class="wow fadeIn">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12 text-center">
+				<h1 class="black hidden-xs hidden-sm"><span>{{getParameterValue('titleSection1')}}</span></h1>
+				<h1 class="black visible-xs visible-sm">{{getParameterValue('titleSection1')}}</h1>
+			</div>
+			<!-- ./title-->
+		</div>
+		<!-- /. row-->
+		<div class="row mg-t80">
+				{% for course in courses %}
+				<div class="col-md-3 col-sm-3 col-xs-12">
+					<div class="col-md-12 col-sm-12 col-xs-12 box">
+						<a href="{{path('course_show', {'slug': course.slug}) }}">
+							<img src="/sistema/web/uploads/course/cover/{{course.cover}}" class="img-responsive center-img" alt="{{ course.name }}" title="{{ course.name }}">
+						</a>
+						<!-- link thumbnail-->
+
+						<a href="{{path('course_show', {'slug': course.slug}) }}">
+							<h1 class="title-video">{{ course.name }}</h1>
+						</a>
+						<!--/.link title-->
+						{#<p class="description-video">{{ course.description|striptags|slice(0,60)|convert_encoding('UTF-8', 'HTML-ENTITIES') ~ '...' }}</p>#}
+						<p class="price-video">{% if course.price != null and course.price > 0 %}R$ {{ course.price|number_format(2, ",", ".") }}{% else %}Gratuito{% endif %}</p>
+						<a href="{{path('course_show', {'slug': course.slug}) }}">
+							<button class="btn btn-see">
+								<i class="fa fa-play-circle-o"></i> Assistir
+							</button>
+						</a>
+						<!--/.link btn-->
+					</div>
+					<!--/.box-->
+				</div>
+				<!--/. video-->
+				{% endfor %}
+		</div>
+		<!-- /. row box videos-->
+		<div class="row mg-t40">
+			{% for entity in highlightCourses %}
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div class="col-md-12 col-sm-12 col-xs-12 box">
+					<a href="{{path('course_show', {'slug': entity.slug}) }}">
+						<img src="/sistema/web/uploads/course/cover/{{entity.cover}}" class="img-responsive center-img" alt="{{ entity.name }}" title="{{ entity.name }}">
+					</a>
+					<!-- link thumbnail-->
+					<a href="{{path('course_show', {'slug': entity.slug}) }}">
+						<h1 class="title-video">{{ entity.name }}</h1>
+					</a>
+					{#<p class="description-video">{{ entity.description|striptags|slice(0,60)|convert_encoding('UTF-8', 'HTML-ENTITIES') ~ '...' }}</p>#}
+					<p class="price-video">{% if entity.price != null and entity.price > 0 %}R$ {{ entity.price|number_format(2, ",", ".") }}{% else %}Gratuito{% endif %}</p>
+					<a href="{{path('course_show', {'slug': entity.slug}) }}">
+						<button class="btn btn-see">
+							<i class="fa fa-play-circle-o"></i> Assistir
+						</button>
+					</a>
+				</div>
+			</div>
+			{% endfor %}
+			<!-- /.box featured video-->
+		</div>
+		<!-- /. row featured videos-->
+	</div>
+	<!-- /.container-->
+</section>
+<!-- /.popular videos -->
+
+{% if ebooks|length > 0 %}
+<section id="ebooks" class="wow fadeIn">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<h1 class="black hisdden-xs hidden-sm"><span>{{getParameterValue('titleSection2')}}</span></h1>
+				<h1 class="black visible-xs visible-sm">{{getParameterValue('titleSection2')}}</h1>
+				<!--/.nº courses-->
+			</div>
+			<!-- title-->
+			{% for ebook in ebooks %}
+				<div class="col-md-4 col-sm-4 col-xs-12">
+					<div class="col-md-12 col-sm-12 col-xs-12 box">
+						<div id="ebook-cover">
+							<a href="{{path('ebook_show', {'slug': ebook.slug}) }}">
+								<img src="/sistema/web/uploads/ebook/capa/{{ebook.capa}}" class="img-responsive center-img">
+							</a>
+							<!--/.link-thumbs-->
+						</div>
+						<a href="{{path('ebook_show', {'slug': ebook.slug}) }}">
+							<h1 class="title-video">{{ ebook.name }}</h1>
+						</a>
+						<!--/. link course name-->
+						{#<p class="description-video">{{ ebook.description|striptags|slice(0,60)|convert_encoding('UTF-8', 'HTML-ENTITIES') ~ '...' }}</p>#}
+						<p class="price-video">{% if ebook.price != null and ebook.price > 0 %}R$ {{ ebook.price|number_format(2, ",", ".") }}{% else %}Gratuito{% endif %}</p>
+						<a href="{{path('ebook_show', {'slug': ebook.slug}) }}">
+							<button class="btn btn-see">
+								<i class="fa fa-play-circle-o"></i> Adquirir
+							</button>
+						</a>
+					</div>
+				<!--/. box-course-->
+				<!--/. course-->
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+{% endif %}
+
+<section id="ads">
+	<div class="container">
+		<div class="row">
+			{% for bannerPublicidade in bannersPublicidade %}
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<a href="{% if bannerPublicidade.url != null %}{% if bannerPublicidade.url starts with 'http://' %}{% else %}http://{% endif %}{{bannerPublicidade.url}}{% else %}javascript:void(0);{% endif %}">
+					<img src="/sistema/web/uploads/banneradvertising/{{bannerPublicidade.image}}" class="img-responsive center-img" alt="{{ bannerPublicidade.title }}" title="{{ bannerPublicidade.title }}" target="_blank">
+				</a>
+			</div>
+			{% endfor %}
+			<!-- cols-->
+		</div>
+		<!--/. row-->
+	</div>
+	<!-- /.container-->
+</section>
+<!--/.ads-->
+
+
+{% block newsletter %}
+	{% include 'AppBundle::newsletter.html.twig' %}
+{% endblock %}
+
+{% if testimonials|length > 0 %}
+<section id="testimonials" class="wow fadeIn">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div id="owl-testimonial">
+					{% for testimonial in testimonials %}
+					<div class="item text-center">
+						<div class="col-md-12 col-sm-12 col-xs-12 text-center">
+							{% if testimonial.image != null %}
+								<img src="/sistema/web/uploads/testimonial/{{testimonial.image}}" alt="{{testimonial.name}}" title="{{testimonial.name}}" class="center-img">
+							{% endif %}
+							<h1 class="title-testimonial">{{testimonial.name}}</h1>
+						</div>
+						<div class="col-md-offset-1 col-md-10 col-sm-12 col-xs-12">
+							<p class="text-testimonial">“{{testimonial.description}}”</p>
+						</div>
+						<!--/.testimonial-->
+					</div>
+					{% endfor %}
+					<!--/.item-->
+				</div>
+				<!-- /. carousel testimonial-->
+			</div>
+			<!--/.content-->
+		</div>
+		<!--/. row-->
+	</div>
+	<!--/.container-->
+</section>
+{% endif %}
+<!-- /.testimonials-->
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts filter='?uglifyjs2'
+        '@AppBundle/Resources/public/js/custom/Home/home.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

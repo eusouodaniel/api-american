@@ -1,0 +1,14 @@
+parameters:
+    #parameters_configuration_repository: AppBundle\Repository\ParametersConfigurationRepository
+
+services:
+    parametro_service:
+        class: AppBundle\Service\ParametroService
+        arguments: ["@doctrine.orm.entity_manager", "@logger"]
+
+    ## Twig
+    samba.twig.extension.parameter:
+        class: AppBundle\Twig\Extension\ParametroExtension
+        arguments: ["@parametro_service"]
+        tags:
+            - { name: twig.extension }

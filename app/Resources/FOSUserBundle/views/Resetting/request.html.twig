@@ -1,0 +1,57 @@
+{% extends '::base-login.html.twig' %}
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}Vanbora - Alteração de Senha{% endblock %}
+
+{% block body %}
+    {% if app.user is null %}
+        <nav id="menu" class="fake_menu"></nav>
+        <div id="preloader">
+            <div data-loader="circle-side"></div>
+        </div>
+        <div id="login">
+            <aside>
+                <figure>
+                    <a href="#"><img src="{{asset('bundles/app/frontend/img/logo.png')}}" width="80" height="60" data-retina="true" alt=""></a>
+                </figure>
+                {% if error is defined %}
+                    <section class="alert alert-danger alert-dismissable">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        Email inválido
+                    </section>
+                {% endif %}
+                  <form id="reseting" action="{{ path('fos_user_resetting_send_email') }}" method="post">
+                    {% if invalid_username is defined %}
+                        Usuário não cadastrado
+                    {% endif %}
+                    <div class="form-group">
+                        <span class="input">
+                        <input type="text" class="input_field" id="username" name="username" required="required">
+                            <label class="input_label">
+                            <span class="input__label-content">E-mail</span>
+                        </label>
+                        </span>
+                    </div>
+                    <input type='submit' value='Redefinir senha' class="btn_1 rounded full-width add_top_60">
+                </form>
+                <div class="copy">© 2018 Vanbora</div>
+            </aside>
+        </div>
+        <!--/.section-->
+    {% else %}
+        <div id="login">
+            <aside>
+                <figure>
+                    <a href="#"><img src="{{asset('bundles/app/frontend/img/logo.png')}}" width="80" height="60" data-retina="true" alt=""></a>
+                </figure>
+                Você já está logado no momento, <a href='{{ path('homepage') }}'>clique aqui</a> e aproveite.
+                <div class="copy">© 2018 Vanbora</div>
+            </aside>
+        </div>
+    {% endif %}
+
+{% endblock body %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

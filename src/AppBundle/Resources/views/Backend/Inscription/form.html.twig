@@ -1,0 +1,42 @@
+{# {{ form_widget(form.photo) }} #}
+<div class="box-body">
+    <div class="form-group">
+        {{ form_errors(form.name) }}
+        <label for="client_first_name">Nome da inscrição</label>
+        {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_errors(form.user) }}
+        <label for="client_first_name">Usuário</label>
+        {{ form_widget(form.user, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_errors(form.plan) }}
+        <label for="client_last_name">Plano</label>
+        {{ form_widget(form.plan, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <b>Pagamento</b>
+    <div class="form-group">
+        <label for="client_last_name">Nome no cartão de crédito</label>
+        <input type="text" name="cardHolder" id='cardHolder' class='form-control'>
+    </div>
+    <div class="form-group">
+        <label for="client_last_name">Número do cartão</label>
+        <input type="number" name="cardNumber" id='cardNumber' class='form-control'>
+    </div>
+    <div class="form-group">
+        <label for="client_last_name">Validade</label>
+        <input type="text" name="cardExpiration" id='cardExpiration' class='form-control'>
+    </div>
+    <div class="form-group">
+        <label for="client_last_name">Código de segurança</label>
+        <input type="number" name="cardSecurity" id='cardSecurity' class='form-control'>
+    </div>
+    <div class="form-group">
+        <label for="client_last_name">Bandeira do cartão</label>
+        <select name="cardSecurity" id='cardSecurity' class='form-control'>
+            <option value="mastercard">Mastercard</option>
+            <option value="visa">Visa</option>
+        </select>
+    </div>
+</div><!-- /.box-body -->

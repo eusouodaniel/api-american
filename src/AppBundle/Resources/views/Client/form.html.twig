@@ -1,0 +1,40 @@
+{{ form_widget(form.photo) }}
+<div class="box-body">
+    <div class="form-group">
+        {{ form_errors(form.first_name) }}
+        {{ form_widget(form.first_name, {'attr': {'class': 'form-control-login', 'placeholder':'Nome'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_errors(form.last_name) }}
+        {{ form_widget(form.last_name, {'attr': {'class': 'form-control-login', 'placeholder':'Sobrenome'}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_errors(form.photoTemp) }}
+        {{ form_widget(form.photoTemp, {'attr': {'class': 'form-control-login', 'placeholder':'Imagem de perfil'}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_errors(form.email) }}
+        {{ form_widget(form.email, {'attr': {'class': 'form-control-login', 'placeholder':'Email'}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_errors(form.phone) }}
+        {{ form_widget(form.phone, {'attr': {'class': 'form-control-login telefone', 'placeholder':'Telefone'}}) }}
+    </div>
+
+    {% if not entity.id  %}
+        <div class="form-group">
+            <input type="password" id="client_plainpassword" name="client_custom[plainPassword]" maxlength="255" class="form-control-login" required="required" autocomplete="off" placeholder="Senha">
+        </div>
+    {% else %}
+        <div class="form-group">
+            <input type="password" id="client_plainpassword" name="client_custom[plainPassword]" maxlength="255" class="form-control-login" autocomplete="off" placeholder="Senha">
+        </div>
+    {% endif %}
+    <!--<div class="form-group">
+        <p>Li e concordo com os <a href="#">Termos de Uso</a></p>
+    </div>-->
+
+</div><!-- /.box-body -->

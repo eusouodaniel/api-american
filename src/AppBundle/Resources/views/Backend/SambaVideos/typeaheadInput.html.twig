@@ -1,0 +1,22 @@
+<div class="form-group">
+  {% if inputLabel is defined  %}
+    <label>{{inputLabel}}:</label>
+  {% else  %}
+    <label>Vídeo:</label>
+  {% endif  %}
+</div>
+<div class="form-group">
+  <input id="video-query" name="searchTerm" type="search" placeholder="Pesquise um vídeo" class="form-control" autocomplete="off">
+  <div class="row" id="box-sambavideos" style="display:none;" data-id-video="id-selected-video">
+    <div class="col-md-3 col-sm-3 col-xs-3 mg-t20 text-center box-label mg-b20">
+      <label for=''>
+        <div class="col-md-12 col-sm-12 col-xs-12 mg-t20">
+          <img src='' class='img-responsive center-img sambavideo-image' />
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 mg-t10 sambavideo-title">
+        </div>
+      </label>
+      <a href="javascript:void(0);" id="remove-sambavideo"><i class="fa fa-trash"></i></a>
+    </div>
+  </div>
+</div>

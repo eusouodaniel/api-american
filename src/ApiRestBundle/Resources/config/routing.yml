@@ -1,0 +1,14 @@
+api_rest_usuario:
+    resource: "ApiRestBundle:User"
+    type:     rest
+    prefix:   /api/user
+
+api_rest_client:
+    resource: "ApiRestBundle:Client"
+    type:     rest
+    prefix:   /api/client
+
+api_rest_inscription:
+    resource: "ApiRestBundle:Inscription"
+    type:     rest
+    prefix:   /api/inscription

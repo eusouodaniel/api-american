@@ -1,0 +1,54 @@
+{% extends '::Backend/base.html.twig' %}
+
+{% block body -%}
+<aside class="right-side">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>{{course.name}} - Questões</h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row ">
+            <div class="col-xs-12 bs-50">
+                <a href="{{ path('backend_course', { 'course': course.id }) }}" class="btn btn-default">Voltar</a>
+                <a href="{{ path('backend_question_new',{'course': course.id}) }}" class="btn btn-success">Novo</a>
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Listagem de Questões</h3>
+                    </div><!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nome</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody class="sortable">
+                            {% for entity in entities %}
+                                <tr>
+                                    <td>{{ entity.id }}</td>
+                                    <td>{{ entity.name }}</td>
+                                    <td>
+                                        <a href="{{ path('backend_question_edit', { 'id': entity.id }) }}" class="btn btn-primary">Editar</a>
+                                        <a href="javascript:void(0);" data-url="{{ path('backend_question_delete', { 'id': entity.id }) }}" class="btn btn-danger delete_item">Excluir</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div>
+        </div>
+    </section><!-- /.content -->
+</aside><!-- /.right-side -->
+{% endblock %}

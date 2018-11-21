@@ -1,0 +1,348 @@
+{{ form_row(form.logo) }}
+{{ form_row(form.bgNewsletter) }}
+
+<div class="box-body">
+    <div class="form-group">
+        <div class="panel-group" id="accordion">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12 panel panel-default">
+                    <div class="panel-heading">
+                       <h4 class="panel-title">
+                           <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">Contato</a>
+                       </h4>
+                    </div>
+                    <div id="collapseSeven" class="panel-collapse collapse">
+                        <div class="panel-body">
+                           <div class="col-md-12 col-sm-12">
+                               {{ form_errors(form.contactEmail) }}
+                               <label for="parameters_contactEmail">Email para contato </label>
+                               {{ form_widget(form.contactEmail, {'attr': {'class': 'form-control'}}) }}
+                           </div>
+                       </div>
+                    </div>
+                </div>
+                <!--/. contato-->
+
+                <div class="col-md-6 col-sm-6 col-xs-12 panel panel-default">
+                    <div class="panel-heading">
+                       <h4 class="panel-title">
+                           <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Logo</a>
+                       </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse">
+                        <div class="panel-body">
+                           <div class="col-md-12 col-sm-12">
+                               {{ form_errors(form.logoTemp) }}
+                               {{ form_row(form.logoTemp, {'attr': {'class': 'form-control'}}) }}
+
+                               {% if entity.logo != null %}
+                                 <br>
+                                 <img src="{{ asset('uploads/parameters_configuration/' ~ entity.logo) }}" class="img-responsive"/>
+                               {% endif %}
+                           </div>
+                       </div>
+                    </div>
+                </div>
+                <!--/. logo-->
+
+            </div>
+            <!--/.row-->
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12 panel panel-default">
+                    <div class="panel-heading">
+                       <h4 class="panel-title">
+                           <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">SEO</a>
+                       </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse">
+                        <div class="panel-body">
+
+                            <div class="col-md-12 col-sm-12 col-xs-12 mg-b15">
+                                {{ form_errors(form.seoVisible) }}
+                                <label class="custom-width" for="parameters_configuration_seoVisible">
+                                    <label class="custom-width">SEO - Tornar o site visível para sites de busca
+                                        <div class="custom-checkbox">
+                                            {{ form_widget(form.seoVisible, {'attr': {'class': 'form-control-new', 'id':'parameters_configuration_seoVisible'}}) }}
+                                            <label for="parameters_configuration_seoVisible"></label>
+                                            <div></div>
+                                        </div></label>
+                                </label>
+
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                {{ form_errors(form.seoTitle) }}
+                                <label for="parameters_configuration_seoTitle">SEO - Título </label>
+                                {{ form_widget(form.seoTitle, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                {{ form_errors(form.seoDescription) }}
+                                <label for="parameters_configuration_seoDescription">SEO - Descrição </label>
+                                {{ form_widget(form.seoDescription, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+
+                       </div>
+                    </div>
+                </div>
+                <!--/. seo-->
+                <div class="col-md-6 col-sm-6 col-xs-12 panel panel-default">
+                    <div class="panel-heading">
+                       <h4 class="panel-title">
+                           <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Títulos</a>
+                       </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse">
+                        <div class="panel-body">
+
+                            <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                {{ form_errors(form.titleSection1) }}
+                                <label for="parameters_configuration_titleSection1">Título do primeiro bloco (Cursos) </label>
+                                {{ form_widget(form.titleSection1, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                {{ form_errors(form.titleSection2) }}
+                                <label for="parameters_configuration_titleSection2">Título do segundo bloco (E-books) </label>
+                                {{ form_widget(form.titleSection2, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+
+                            <div class="col-md-12 col-sm-12 col-xs-12 mg-b15">
+                                {{ form_errors(form.titleMenuCourse) }}
+                                <label for="parameters_configuration_titleMenuCourse">Título da seção de Cursos no menu </label>
+                                {{ form_widget(form.titleMenuCourse, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+
+                       </div>
+                    </div>
+                </div>
+                <!--/. titles-->
+            </div>
+            <!--/.row-->
+
+            <div class="row">
+
+                <div class="col-md-6 col-sm-6 col-xs-12 panel panel-default">
+                    <div class="panel-heading">
+                       <h4 class="panel-title">
+                           <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Rodapé</a>
+                       </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse">
+                        <div class="panel-body">
+
+                            <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                {{ form_errors(form.footerTitle) }}
+                                <label for="parameters_configuration_footerTitle">Rodapé - Nome do site </label>
+                                {{ form_widget(form.footerTitle, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                {{ form_errors(form.footerBio) }}
+                                <label for="parameters_configuration_footerBio">Rodapé - Descrição </label>
+                                {{ form_widget(form.footerBio, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                {{ form_errors(form.footerAddress) }}
+                                <label for="parameters_configuration_footerAddress">Rodapé - Endereço </label>
+                                {{ form_widget(form.footerAddress, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                {{ form_errors(form.footerEmail) }}
+                                <label for="parameters_configuration_footerEmail">Rodapé - Email </label>
+                                {{ form_widget(form.footerEmail, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                {{ form_errors(form.footerPhone1) }}
+                                <label for="parameters_configuration_footerPhone1">Rodapé - Telefone 1 </label>
+                                {{ form_widget(form.footerPhone1, {'attr': {'class': 'form-control telefone'}}) }}
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                {{ form_errors(form.footerPhone2) }}
+                                <label for="parameters_configuration_footerPhone2">Rodapé - Telefone 2 </label>
+                                {{ form_widget(form.footerPhone2, {'attr': {'class': 'form-control telefone'}}) }}
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                {{ form_errors(form.footerInstagram) }}
+                                <label for="parameters_configuration_footerInstagram">Rodapé - Instagram </label>
+                                {{ form_widget(form.footerInstagram, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                {{ form_errors(form.footerTwitter) }}
+                                <label for="parameters_configuration_footerTwitter">Rodapé - Twitter </label>
+                                {{ form_widget(form.footerTwitter, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                {{ form_errors(form.footerFacebook) }}
+                                <label for="parameters_configuration_footerFacebook">Rodapé - Facebook </label>
+                                {{ form_widget(form.footerFacebook, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                       </div>
+                    </div>
+                </div>
+                <!--/. footer-->
+
+                <div class="col-md-6 col-sm-6 col-xs-12 panel panel-default">
+                    <div class="panel-heading">
+                       <h4 class="panel-title">
+                           <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">Cores</a>
+                       </h4>
+                    </div>
+                    <div id="collapseFive" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="row">
+
+                                <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                    {{ form_errors(form.headerColor) }}
+                                    <label for="parameters_configuration_headerColor">Cor do cabeçalho</label>
+                                    {{ form_widget(form.headerColor, {'attr': {'class': 'form-control colorpicker-input col-md-1'}}) }}
+                                </div>
+
+                                <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                    {{ form_errors(form.footerColor) }}
+                                    <label for="parameters_configuration_footerColor">Cor do rodapé</label>
+                                    {{ form_widget(form.footerColor, {'attr': {'class': 'form-control colorpicker-input col-md-1'}}) }}
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                    {{ form_errors(form.copyrightColor) }}
+                                    <label for="parameters_configuration_copyrightColor">Cor do copyright</label>
+                                    {{ form_widget(form.copyrightColor, {'attr': {'class': 'form-control colorpicker-input col-md-1'}}) }}
+                                </div>
+
+                                <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                    {{ form_errors(form.btnPrincipalPrimaryColor) }}
+                                    <label for="parameters_configuration_btnPrincipalPrimaryColor">Botão Principal (cor primária)</label>
+                                    {{ form_widget(form.btnPrincipalPrimaryColor, {'attr': {'class': 'form-control colorpicker-input col-md-1'}}) }}
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                    {{ form_errors(form.btnPrincipalSecundaryColor) }}
+                                    <label for="parameters_configuration_btnPrincipalSecundaryColor">Botão Principal (cor secundária)</label>
+                                    {{ form_widget(form.btnPrincipalSecundaryColor, {'attr': {'class': 'form-control colorpicker-input col-md-1'}}) }}
+                                </div>
+
+                                <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                    {{ form_errors(form.btnLoginPrimaryColor) }}
+                                    <label for="parameters_configuration_btnLoginPrimaryColor">Botão Secundário (cor primária)</label>
+                                    {{ form_widget(form.btnLoginPrimaryColor, {'attr': {'class': 'form-control colorpicker-input col-md-1'}}) }}
+                                </div>
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                    {{ form_errors(form.btnLoginSecundaryColor) }}
+                                    <label for="parameters_configuration_btnLoginSecundaryColor">Botão Secundário (cor secundária)</label>
+                                    {{ form_widget(form.btnLoginSecundaryColor, {'attr': {'class': 'form-control colorpicker-input col-md-1'}}) }}
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                    {{ form_errors(form.menuColor) }}
+                                    <label for="parameters_configuration_menuColor">Cor do texto do menu</label>
+                                    {{ form_widget(form.menuColor, {'attr': {'class': 'form-control colorpicker-input col-md-1'}}) }}
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                    {{ form_errors(form.menuSelectedColor) }}
+                                    <label for="parameters_configuration_menuSelectedColor">Cor do texto do menu (quando selecionado)</label>
+                                    {{ form_widget(form.menuSelectedColor, {'attr': {'class': 'form-control colorpicker-input col-md-1'}}) }}
+                                </div>
+
+                                <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                    {{ form_errors(form.footerTitleColor) }}
+                                    <label for="parameters_configuration_footerTitleColor">Cor do texto do rodapé (Título)</label>
+                                    {{ form_widget(form.footerTitleColor, {'attr': {'class': 'form-control colorpicker-input col-md-1'}}) }}
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                    {{ form_errors(form.footerSubtitleColor) }}
+                                    <label for="parameters_configuration_footerSubtitleColor">Cor do texto do rodapé (Subtítulo)</label>
+                                    {{ form_widget(form.footerSubtitleColor, {'attr': {'class': 'form-control colorpicker-input col-md-1'}}) }}
+                                </div>
+
+                                <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                    {{ form_errors(form.footerTextColor) }}
+                                    <label for="parameters_configuration_footerTextColor">Cor do texto do rodapé (Texto)</label>
+                                    {{ form_widget(form.footerTextColor, {'attr': {'class': 'form-control colorpicker-input col-md-1'}}) }}
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                    {{ form_errors(form.footerContactTextColor) }}
+                                    <label for="parameters_configuration_footerContactTextColor">Cor do texto do rodapé (Mapa do site e contato)</label>
+                                    {{ form_widget(form.footerContactTextColor, {'attr': {'class': 'form-control colorpicker-input col-md-1'}}) }}
+                                </div>
+
+                                <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                    {{ form_errors(form.footerIconColor) }}
+                                    <label for="parameters_configuration_footerIconColor">Cor dos ícones</label>
+                                    {{ form_widget(form.footerIconColor, {'attr': {'class': 'form-control colorpicker-input col-md-1'}}) }}
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                    {{ form_errors(form.pageTitleColor) }}
+                                    <label for="parameters_configuration_pageTitleColor">Cor do bloco do título da página</label>
+                                    {{ form_widget(form.pageTitleColor, {'attr': {'class': 'form-control colorpicker-input col-md-1'}}) }}
+                                </div>
+
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    {{ form_errors(form.bannerTextColor) }}
+                                    <label for="parameters_configuration_bannerTextColor">Cor do texto do banner</label>
+                                    {{ form_widget(form.bannerTextColor, {'attr': {'class': 'form-control colorpicker-input col-md-1'}}) }}
+                                </div>
+                            </div>
+                       </div>
+                    </div>
+                </div>
+                <!--/. colors-->
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12 panel panel-default">
+                    <div class="panel-heading">
+                       <h4 class="panel-title">
+                           <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSix">Backgrounds</a>
+                       </h4>
+                    </div>
+                    <div id="collapseSix" class="panel-collapse collapse ">
+                        <div class="panel-body">
+                            <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                {{ form_errors(form.lessonBackgroundColor) }}
+                                <label for="parameters_configuration_lessonBackgroundColor">Background da página de aula</label>
+                                {{ form_widget(form.lessonBackgroundColor, {'attr': {'class': 'form-control colorpicker-input col-md-1'}}) }}
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12 mg-b15">
+                                {{ form_errors(form.bgNewsletterTemp) }}
+                                {{ form_row(form.bgNewsletterTemp, {'attr': {'class': 'form-control'}}) }}
+
+                                {% if entity.bgNewsletter != null %}
+                                  <br>
+                                  <img src="{{ asset('uploads/parameters_configuration/' ~ entity.bgNewsletter) }}" class="img-responsive"/>
+                                {% endif %}
+                            </div>
+                       </div>
+                    </div>
+                </div>
+                <!--/. backgrounds-->
+            </div>
+
+        </div>
+    </div>
+</div><!-- /.box-body -->

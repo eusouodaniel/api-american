@@ -1,0 +1,135 @@
+/** Header **/
+{% if config.headerColor != null  %}
+.navbar-default{
+  background: {{config.headerColor|raw}};
+}
+{% endif %}
+
+/** Footer **/
+{% if config.footerColor != null  %}
+footer{
+  background: {{config.footerColor|raw}};
+}
+{% endif %}
+
+{% if config.copyrightColor != null  %}
+.copyright{
+  background: {{config.copyrightColor|raw}};
+}
+{% endif %}
+
+/** Botões **/
+{% if config.btnPrincipalPrimaryColor != null  %}
+.btn-see{
+  background: {{config.btnPrincipalPrimaryColor|raw}};
+}
+.btn-register, .panel-body .btn-register{
+  background: {{config.btnPrincipalPrimaryColor|raw}};
+  border-color: {{config.btnPrincipalPrimaryColor|raw}};
+}
+{% endif %}
+
+{% if config.btnPrincipalSecundaryColor != null  %}
+.btn-see:hover{
+  border-color: {{config.btnPrincipalSecundaryColor|raw}} !important;
+}
+
+.btn-register:hover, .btn-register:focus{
+  border-color: {{config.btnPrincipalSecundaryColor|raw}} !important;
+  color: {{config.btnPrincipalSecundaryColor|raw}} !important;
+}
+{% endif %}
+
+{% if config.btnLoginPrimaryColor != null  %}
+.btn-login{
+  color: {{config.btnLoginSecundaryColor|raw}} !important;
+  background: {{config.btnLoginPrimaryColor|raw}} !important;
+  border-color: {{config.btnLoginSecundaryColor|raw}} !important;
+}
+{% endif %}
+
+{% if config.btnLoginSecundaryColor != null  %}
+.btn-login:hover{
+  color: {{config.btnLoginPrimaryColor|raw}} !important;
+  background: {{config.btnLoginSecundaryColor|raw}} !important;
+  border-color: {{config.btnLoginPrimaryColor|raw}} !important;
+}
+{% endif %}
+
+/** Menu **/
+{% if config.menuColor != null  %}
+.navbar-default .navbar-nav>li>a{
+  color: {{config.menuColor|raw}};
+}
+{% endif %}
+
+{% if config.menuSelectedColor != null  %}
+.navbar-default .navbar-nav>li>a:hover {
+    color: {{config.menuSelectedColor|raw}} !important;
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    color: {{config.menuSelectedColor|raw}} !important;
+}
+.hvr-underline-from-center:before {
+    background: {{config.menuSelectedColor|raw}} !important;
+}
+{% endif %}
+
+/** Rodapé **/
+{% if config.footerTitleColor != null  %}
+h1.title-footer{
+  color: {{config.footerTitleColor|raw}};
+}
+{% endif %}
+
+{% if config.footerSubtitleColor != null  %}
+hr.hr-footer{
+  border-color: {{config.footerSubtitleColor|raw}};
+}
+{% endif %}
+
+{% if config.footerIconColor != null  %}
+footer .fa-envelope, footer .fa-phone{
+  color: {{config.footerIconColor|raw}};
+}
+#newsletter .fa-envelope {
+  color: {{config.footerIconColor|raw}};
+}
+{% endif %}
+
+{% if config.footerTextColor != null  %}
+p.description-footer{
+  color: {{config.footerTextColor|raw}};
+}
+{% endif %}
+
+{% if config.footerContactTextColor != null  %}
+.footer ul li a, .footer p a{
+  color: {{config.footerContactTextColor|raw}};
+}
+{% endif %}
+
+/** Geral **/
+{% if config.pageTitleColor != null  %}
+/** Título da página **/
+#welcome{
+  background: {{config.pageTitleColor|raw}};
+}
+{% endif %}
+
+{% if config.lessonBackgroundColor != null  %}
+/** Título da página **/
+#single-video{
+  background: {{config.lessonBackgroundColor|raw}};
+}
+{% endif %}
+
+/** Banner **/
+{% if config.bannerTextColor != null  %}
+h1.title-slider{
+  color: {{config.bannerTextColor|raw}};
+}
+p.text-slider{
+  color: {{config.bannerTextColor|raw}};
+}
+{% endif %}

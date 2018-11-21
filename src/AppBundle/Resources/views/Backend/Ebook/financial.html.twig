@@ -1,0 +1,85 @@
+{% extends '::Backend/base.html.twig' %}
+
+{% block body -%}
+<aside class="right-side">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>{{entity.name}} - Pagamentos</h1>
+    </section>
+
+    <section class="content">
+      <div class="col-md-12">
+          <div class="panel panel-tile">
+              <div class="panel-body pn pl20 p5">
+                <div class="col-sm-6 col-md-4">
+                  <h2 class="mt15 lh15">
+                      <b class="ng-binding">R$ {{(totalPaymentsDisponivel+totalPaymentsPaga)|number_format(2, ",", ".")}}</b>
+                  </h2>
+                  <h5 class="text-muted">Total Recebido</h5>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                  <h2 class="mt15 lh15">
+                      <b class="ng-binding">R$ {{totalPaymentsDisponivel|number_format(2, ",", ".")}}</b>
+                  </h2>
+                  <h5 class="text-muted">Total Disponível</h5>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                  <h2 class="mt15 lh15">
+                      <b class="ng-binding">R$ {{totalPaymentsPaga|number_format(2, ",", ".")}}</b>
+                  </h2>
+                  <h5 class="text-muted">Total Pago</h5>
+                </div>
+              </div>
+          </div>
+      </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Listagem de pagamentos</h3>
+                    </div><!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                  <th>Nome</th>
+                                  <th>Valor</th>
+                                  <th>Data de Criação</th>
+                                  <th>Data de Atualização</th>
+                                  <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for payment in payments %}
+                                <tr>
+                                    <td>{{ payment.user }}</td>
+                                    <td>R$ {{ payment.value|number_format(2, ",", ".") }}</td>
+                                    <td>{{ payment.dtCreation|date("d/m/Y H:i") }}</td>
+                                    <td>{{ payment.dtUpdate|date("d/m/Y H:i") }}</td>
+                                    <td>
+                                      {% if payment.paymentStatus.id <= 2 %}
+                                        <span class="label label-warning">
+                                      {% elseif payment.paymentStatus.id <= 4 %}
+                                        <span class="label label-success">
+                                      {% else %}
+                                        <span class="label label-danger">
+                                      {% endif %}
+                                        {{ payment.paymentStatus }}
+                                      </span>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div>
+        </div>
+    </section><!-- /.content -->
+</aside><!-- /.right-side -->
+{% endblock %}

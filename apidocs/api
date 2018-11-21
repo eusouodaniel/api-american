@@ -1,0 +1,32 @@
+endpoint:
+/api/inscription/create
+
+parameters:
+
+Dados do cartão:
+cardHolder - Nome no cartão
+cardNumber - Número do cartão
+cardExpiration - Expiração do cartão
+cardSecurity - Código de segurança do cartão
+cardBandeira - Bandeira do cartão
+dayOfPayment - Dia do pagamento
+
+Dados do plano:
+namePlan - Nome do plano
+descriptionPlan - Descrição do plano
+
+Dados do produto:
+nameProduct - Nome do produto
+descriptionProduct - Descrição do produto
+priceProduct - Preço do produto - formato: 0.00 | exemplo: 50.20
+
+Dados do usuário:
+email - Email do usuário
+cpf - Cpf do usuário
+first_name - Primeiro nome do usuário
+last_name - Sobrenome do usuário
+
+Respostas:
+200 - Assinatura efetuada com sucesso
+405 - Método não aceito
+500 - Erro interno, campo "data" com a descrição do mesmo

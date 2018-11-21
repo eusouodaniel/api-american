@@ -1,0 +1,47 @@
+<div class="box-body">
+    <div class="form-group">
+        {{ form_errors(form.name) }}
+        <label for="lesson_name">Nome</label>
+        {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+
+        <label for="professional_service">Respostas</label>
+
+        <table id="questionitens-table" class="table table-bordered table-striped" data-prototype="{{ _self.prototype_questionitems(form.questionitems.vars.prototype)|e }}" data-index-count="0">
+            {% macro prototype_questionitems(questionitem) %}
+                <tr class="questionitens-item">
+                    <td>
+                        <div class="col-sm-2">
+                            <a style="margin-top: 20px;" class="confirm-delete questionitens-remove-item btn-sm btn-danger line-h2" href="javascript:void(0);" data-confirm-title="Botão Delete" data-confirm-text="Confirma Deleção">
+                            <i class="icon-trash">Deletar</i>
+                            </a>
+                        </div>
+                        <div class="col-sm-10 form-group">
+                            {{ form_errors(questionitem.name) }}
+                            <label for="question_item_name">Resposta</label>
+                            {{ form_widget(questionitem.name) }}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="col-sm-12">
+                            {{ form_errors(questionitem.correctAnswer) }}
+                            <label for="question_item_correctAnswer">Resposta Correta</label>
+                            {{ form_widget(questionitem.correctAnswer, {'attr': {'class': 'correct-answer'}}) }}
+                        </div>
+                    </td>
+                </tr>
+            {% endmacro %}
+            <tbody>
+                {% for questionitem in form.questionitems %}
+                    {{_self.prototype_questionitems(questionitem)}}
+                {% else %}
+                  {% do form.questionitems.setRendered %}
+                {% endfor %}
+            </tbody>
+        </table>
+            <br>
+        <section class="btn-container glow1"><a id="item-add" href="javascript:void(0);" class="btn btn-info btn-add pull-right" title="Botão adicionar">Adicionar</a></section>
+    </div>
+</div><!-- /.box-body -->

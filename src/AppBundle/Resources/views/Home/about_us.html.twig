@@ -1,0 +1,32 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+<section id="welcome" class="wow fadeIn">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9 col-sm-8 col-xs-12">
+				<h1 class="white">Quem Somos</h1>
+			</div>
+			<!-- /.title-->
+			<div class="col-md-3 col-sm-4 col-xs-12 mg-t20">
+				{% include 'AppBundle:Search:searchInput.html.twig' %}
+				<!--/. form search -->
+			</div>
+			<!--/.search-->
+		</div>
+		<!--/. row -->
+	</div>
+	<!--./container -->
+</section>
+<!-- /.search-->
+
+<section id="contact" class="wow fadeIn mg-b60">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				{{quem_somos_content.description|raw}}
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

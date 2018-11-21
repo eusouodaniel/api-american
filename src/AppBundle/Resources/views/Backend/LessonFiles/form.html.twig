@@ -1,0 +1,17 @@
+{{ form_widget(form.file) }}
+
+<div class="box-body">
+    <div class="form-group">
+        {{ form_errors(form.name) }}
+        <label for="lessonfiles_name">Nome arquivo</label>
+        {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_errors(form.fileTemp) }}
+        <label for="lessonfiles_fileTemp">Arquivo</label>
+        {{ form_widget(form.fileTemp, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    {% if lessonFile.file != null %}
+            <a href="{{ asset('uploads/lesson/file/' ~ lessonFile.file) }}">{{ lessonFile.file }}</a>
+    {% endif %}
+</div><!-- /.box-body -->

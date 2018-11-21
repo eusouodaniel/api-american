@@ -1,0 +1,146 @@
+{% extends '::Backend/base.html.twig' %}
+
+{% block title %}AppBundle:Home:index{% endblock %}
+
+{% block body %}
+<aside class="right-side">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Dashboard</h1>
+    </section>
+    {% if views != null %}
+      <section class="content">
+          <div class="col-md-12">
+              <div class="panel panel-tile">
+                  <div class="panel-body pn pl20 p5">
+                    <div class="col-sm-6 col-md-3">
+                      <h2 class="mt15 lh15">
+                          <b class="ng-binding">{{totalHoras}}</b>
+                      </h2>
+                      <h5 class="text-muted">Armazenamento</h5>
+                    </div>
+                    <div class="col-sm-6 col-md-2">
+                      <h2 class="mt15 lh15">
+                          <b class="ng-binding">{{views.views}}</b>
+                      </h2>
+                      <h5 class="text-muted">Visualizações</h5>
+                    </div>
+                    <div class="col-sm-6 col-md-2">
+                      <h2 class="mt15 lh15">
+                          <b class="ng-binding">{{views.completeViews}}</b>
+                      </h2>
+                      <h5 class="text-muted">Visualizações Completas</h5>
+                    </div>
+                    <div class="col-sm-6 col-md-2">
+                      <h2 class="mt15 lh15">
+                          <b class="ng-binding">{{(views.retention * 100)|number_format(1, ',', '.')}}%</b>
+                      </h2>
+                      <h5 class="text-muted">Retenção</h5>
+                    </div>
+                    <div class="col-sm-6 col-md-2">
+                      <h2 class="mt15 lh15">
+                          <b class="ng-binding">{{(views.conversion * 100)|number_format(1, ',', '.')}}%</b>
+                      </h2>
+                      <h5 class="text-muted">Conversão</h5>
+                    </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="col-md-12 devices-section" data-info="{{devices}}">
+              <div class="box">
+                  <div class="box-header">
+                      <h3 class="box-title">Dispositivos</h3>
+                  </div><!-- /.box-header -->
+                  <div class="panel panel-tile">
+                      <div class="panel-body pn pl20 p5">
+                        <div class="col-sm-6 col-md-3">
+                          <h2 class="mt15 lh15">
+                              <b class="ng-binding device-desktop"></b>
+                          </h2>
+                          <h5 class="text-muted">Desktop</h5>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                          <h2 class="mt15 lh15">
+                              <b class="ng-binding device-mobile"></b>
+                          </h2>
+                          <h5 class="text-muted">Mobile Total</h5>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                          <h2 class="mt15 lh15">
+                              <b class="ng-binding device-android"></b>
+                          </h2>
+                          <h5 class="text-muted">Android</h5>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                          <h2 class="mt15 lh15">
+                              <b class="ng-binding device-ios"></b>
+                          </h2>
+                          <h5 class="text-muted">iOS</h5>
+                        </div>
+                      </div>
+                  </div>
+              </div><!-- /.box -->
+          </div>
+
+          <div class="row">
+              <div class="col-xs-6">
+                  <div class="box">
+                      <div class="box-header">
+                          <h3 class="box-title">Localização</h3>
+                      </div><!-- /.box-header -->
+                      <div class="panel panel-tile">
+                          <div class="panel-body pn pl20 p5">
+                            {% for region in regions %}
+                              <div class="col-sm-6 col-md-6 regions-item">
+                                <div class="col-sm-10 col-md-10">
+                                  <h5 class="mt15 lh15"><b class="ng-binding">{{region.name}}</b></h5>
+                                  <h5 class="text-muted">{{region.country}}</h5>
+                                </div>
+                                <div class="col-sm-2 col-md-2">
+                                  <h5 class="mt15 lh15"><b class="ng-binding">{{region.percent * 100}}%</b></h5>
+                                </div>
+                              </div>
+                            {% endfor %}
+                          </div>
+                      </div>
+                  </div><!-- /.box -->
+              </div>
+              <div class="col-xs-6">
+                  <div class="box">
+                      <div class="box-header">
+                          <h3 class="box-title">Origens de tráfego</h3>
+                      </div><!-- /.box-header -->
+                      <div class="box-body">
+                          {% for origin in origins %}
+                            <b>{{origin.name}}</b> - {{origin.value}} acessos
+                            <div class="progress">
+                              <div class="progress-bar" role="progressbar" aria-valuenow="{{origin.percent * 100}}" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width:{{origin.percent * 100}}%">
+                                {{origin.percent * 100}}%
+                              </div>
+                            </div>
+                          {% endfor %}
+
+                      </div><!-- /.box-body -->
+                  </div><!-- /.box -->
+              </div>
+          </div>
+      </section><!-- /.content -->
+    {% else %}
+      <section class="content">
+        <div class="col-md-12">
+        </div>
+      </section>
+    {% endif %}
+
+</aside><!-- /.right-side -->
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts filter='?uglifyjs2'
+        '@AppBundle/Resources/public/js/custom/admin/index.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

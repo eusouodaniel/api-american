@@ -1,0 +1,48 @@
+{% extends "::base.html.twig" %}
+
+{% block body -%}
+    <section class="form-box1 login-user register" id="login">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 col-sm-6 col-xs-12 panel-theme nopadding-xs mg-t50xs text-center">
+					<h1 class="black">CADASTRO </h1>
+                    <div class="panel-body">
+                        <div class="form-box" id="login-box">
+                            <form class="" action="{{ path('client_signup') }}" method="post" {{ form_enctype(form) }}>
+
+                                {{ form_widget(form._token) }}
+
+                                {% block messages %}
+                                    {{ parent() }}
+                                    {{ form_errors(form) }}
+                                {% endblock %}
+
+                                {% include 'AppBundle:Client:form.html.twig' with {'form': form} %}
+
+                                <div class="box-footer text-right">
+                                    <button type="submit" class="btn btn-go">Criar Conta</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                        <!--/.form-box-->
+
+                    </div>
+                    <!--/.panel-body-->
+                    <div class="footer login col-md-12 col-sm-12 col-xs-12 text-right nopadding-p mg-t20">
+                         <p>Já possui uma conta?<a class="page-scroll" href="{{ path('fos_user_security_login') }}"> <b>Faça login</b></a></p>
+                     </div>
+                </div>
+                <!--/.cols-->
+            </div>
+            <!--/.row-->
+        </div>
+        <!--/. container-->
+    </section>
+    <!--/. register-->
+
+
+
+
+{% endblock %}

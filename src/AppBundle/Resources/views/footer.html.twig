@@ -1,0 +1,111 @@
+<!-- /.footer-->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-3 col-xs-12 text-left">
+                <h1 class="title-footer">{{getParameterValue('footerTitle')}}</h1>
+                <hr class="hr-footer">
+                <p class="description-footer mg-t15">{{getParameterValue('footerBio')}}</p>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12 text-left">
+                <h1 class="title-footer">Mapa do Site</h1>
+                <hr class="hr-footer">
+                <ul class="map">
+                    <div class="col-md-6 col-sm-6 col-xs-12 nopadding-l">
+                        <li><a href="{{path("homepage")}}#page-top">Home</a></li>
+                        <li><a href="{{path("about_us")}}">Quem Somos</a></li>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12 nopadding-l">
+                        <li><a href="{{path("course_list")}}">Cursos</a></li>
+                        <li><a href="{{path("home_contact")}}">Contato</a></li>
+                    </div>
+                </ul>
+                <!-- list of pages-->
+            </div>
+            <!--/.map-->
+            <div class="col-md-4 col-sm-4 col-xs-12 text-left">
+                <h1 class="title-footer">Contatos</h1>
+                <hr class="hr-footer">
+                <p class="description-footer mg-t15">{{getParameterValue('footerAddress')}}</p>
+                <p class="mg-b30 mg-t20"><a href="#"><i class="fa fa-envelope"></i>{{getParameterValue('footerEmail')}}</a></p>
+                {% set footerPhone1 = getParameterValue('footerPhone1') %}
+                {% if footerPhone1 != null %}
+                  <p><a href="#"><i class="fa fa-phone"></i>{{footerPhone1}}</a></p>
+                {% endif %}
+                {% set footerPhone2 = getParameterValue('footerPhone2') %}
+                {% if footerPhone2 != null %}
+                  <p><a href="#"><i class="fa fa-phone"></i>{{footerPhone2}}</a></p>
+                {% endif %}
+            </div>
+            <!--/.contact-->
+        </div>
+        <!--/. row-->
+    </div>
+    <!--/.container -->
+</footer>
+<!--/.footer -->
+
+<div class="col-md-12 col-sm-12 col-xs-12 copyright">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-8 col-sm-8 col-xs-12">
+                <ul class="cards text-left">
+                    <li><img src="{{asset('bundles/app/img/frontend/payment.png')}}" class="img-responsive"></li>
+                </ul>
+                <!--/. list of cards-->
+            </div>
+            <!--/. cards-->
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <ul class="social text-right">
+                    {% set footerInstagram = getParameterValue('footerInstagram') %}
+                    {% set footerTwitter = getParameterValue('footerTwitter') %}
+                    {% set footerFacebook = getParameterValue('footerFacebook') %}
+                    {% if footerInstagram != null %}
+                      <li>
+                          <a href="{{footerInstagram}}">
+                              <span class="fa-stack fa-lg hvr-pop">
+                                  <i class="fa fa-circle fa-stack-2x"></i>
+                                  <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                              </span>
+                          </a>
+                      </li>
+                      <!--/.instagram-->
+                    {% endif %}
+                    {% if footerTwitter != null %}
+                      <li>
+                          <a href="{{footerTwitter}}">
+                              <span class="fa-stack fa-lg hvr-pop">
+                                  <i class="fa fa-circle fa-stack-2x"></i>
+                                  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                              </span>
+                          </a>
+                      </li>
+                      <!--/.twitter-->
+                    {% endif %}
+                    {% if footerFacebook != null %}
+                      <li>
+                          <a href="{{footerFacebook}}">
+                              <span class="fa-stack fa-lg hvr-pop">
+                                  <i class="fa fa-circle fa-stack-2x"></i>
+                                  <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                              </span>
+                          </a>
+                      </li>
+                      <!--/.facebook-->
+                    {% endif %}
+                </ul>
+                <!--/.social-->
+            </div>
+            <!--/.social icons-->
+        </div>
+        <!--/. row-->
+    </div>
+    <!--/. container-->
+</div>
+<!--/. copyright-->
+
+
+
+</body>
+</html>

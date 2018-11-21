@@ -1,0 +1,58 @@
+{% extends '::Backend/base.html.twig' %}
+
+{% block body -%}
+<aside class="right-side">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Depoimentos</h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row ">
+            <div class="col-xs-12 bs-50">
+                <a href="{{ path('backend_testimonial_new') }}" class="btn btn-success">Cadastrar novo depoimento</a>
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Listagem de Depoimentos</h3>
+                    </div><!-- /.box-header -->
+
+                    <div class="row">
+                       <div class="col-md-12">
+                            <span class="info-feature">Cadastre novos depoimentos para serem exibidos na página inicial de seu site.</span>
+                       </div>
+                    </div>
+
+                    <div class="box-body table-responsive no-padding mg-top-20">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for entity in entities %}
+                                <tr>
+                                    <td>{{ entity.name }}</td>
+                                    <td>
+                                        <a href="{{ path('backend_testimonial_edit', { 'id': entity.id }) }}" class="btn btn-primary">Editar</a>
+                                        <a href="javascript:void(0);" data-url="{{ path('backend_testimonial_delete', { 'id': entity.id }) }}" class="btn btn-danger delete_item">Excluir</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div>
+        </div>
+    </section><!-- /.content -->
+</aside><!-- /.right-side -->
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+<section id="welcome" class="wow fadeIn">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9 col-sm-8 col-xs-12">
+				<h1 class="white">Entre em contato</h1>
+			</div>
+			<!-- /.title-->
+			<div class="col-md-3 col-sm-4 col-xs-12 mg-t20">
+				{% include 'AppBundle:Search:searchInput.html.twig' %}
+				<!--/. form search -->
+			</div>
+			<!--/.search-->
+		</div>
+		<!--/. row -->
+	</div>
+	<!--./container -->
+</section>
+<!-- /.search-->
+
+<section id="contact" class="wow fadeIn mg-b60">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				{{contato_content.description|raw}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<form action="{{ path('home_contact') }}"  method="post"  enctype="multipart/form-data">
+				    <div class="row mg-b10">
+				        <div class="col-md-6 col-xs-12 col-sm-6 mg-t20">
+				            {{ form_errors(form.name) }}
+				            {{ form_widget(form.name, {'attr': {'class': 'form-control', 'required': 'require', 'placeholder': "Nome"} }) }}
+				        </div>
+				        <div class="col-md-6 col-xs-12 col-sm-6 mg-t20">
+				            {{ form_errors(form.email) }}
+				            {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': "E-mail"} }) }}
+				        </div>
+				    </div>
+				    <div class="row mg-b10">
+				        <div class="col-md-6 col-xs-12 col-sm-6 mg-t20">
+				            {{ form_errors(form.phone) }}
+				            {{ form_widget(form.phone, {'attr': {'class': 'form-control telefone', 'placeholder': "Telefone"} }) }}
+				        </div>
+						<div class="col-md-6 col-xs-12 col-sm-6 mg-t20">
+							{{ form_errors(form.subject) }}
+							{{ form_widget(form.subject, {'attr': {'class': 'form-control', 'required': 'require', 'placeholder': "Assunto"} }) }}
+						</div>
+				    </div>
+				    <div class="row text-right mg-b10">
+						<div class="col-md-12 col-xs-12 col-sm-12 mg-t20">
+				        	{{ form_errors(form.message) }}
+				        	{{ form_widget(form.message, {'attr': {'class': 'form-control', 'rows':'7', 'required': 'require', 'placeholder': "Mensagem"} }) }}
+						</div>
+					</div>
+					<div class="row text-right mg-t20">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<button type="submit" class="btn btn-send ts-10">Enviar</button>
+				 		</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

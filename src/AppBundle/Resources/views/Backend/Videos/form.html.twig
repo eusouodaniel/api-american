@@ -1,0 +1,50 @@
+{% set sambaToken = getParameterValue('sambaToken') %}
+{% set projectId = getParameterValue('projectId') %}
+
+<input type="hidden" name="projectId" id="projectId" value="{{projectId}}">
+<input type="hidden" name="access_token" id="sambaToken" value="{{sambaToken}}">
+
+{{ form_widget(form.sambaid) }}
+{{ form_widget(form.fileName) }}
+
+<div class="box-body">
+		<div class="form-group">
+			<label>Vídeo</label>
+			{% if video.sambaid == null %}
+    		<input type="file" name="file" id="file" class="filestyle" data-buttonName="btn-info" data-iconName="fa fa-upload" data-buttonText="Escolha o vídeo" onchange="javascript:uploadFile()">
+			{% endif %}
+      {% if video is defined %}
+          <label id="fileNameSelected">{{ video.fileName }}</label>
+      {% endif %}
+		</div>
+    <div class="form-group">
+        {{ form_errors(form.name) }}
+        <label for="videos_name">Nome</label>
+        {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_errors(form.description) }}
+        <label for="videos_description">Descrição</label>
+        {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_errors(form.active) }}
+        <label for="videos_active">Ativo</label>
+        {{ form_widget(form.active, {'attr': {'class': 'checkbox'}}) }}
+    </div>
+</div>
+
+
+    <div id="confirm" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                Tem certeza que deseja enviar o vídeo: <label id="fileNameModal"></label>?
+              </div>
+              <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-success" id="enviar">Enviar</button>
+                <button type="button" data-dismiss="modal" class="btn btn-danger">Cancelar</button>
+              </div>
+            </div>
+        </div>
+    </div>
